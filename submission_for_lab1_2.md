@@ -23,20 +23,53 @@ int main(int argc, char*argv[]){
     return 0;
 }
 ```
-1. **Vulnerabilities:** the `get() function` is unsafe because it does not perform any bounds checking on the input. If the user provides input larger than the buffer (which is `char array[200]` in this case), it will overwrite adjacent memory locations, potentially including the return address of the `vuln() function`.
-2. **Goal:** You want to overflow the array buffer in such a way that the return address is overwritten with the address of secretFunc()
+1. **Vulnerabilities:** the
+   ```ruby
+   get() function
+   ```
+   is unsafe because it does not perform any bounds checking on the input. If the user provides input larger than the buffer (which is `char array[200]` in this case), it will overwrite adjacent memory locations, potentially including the return address of the
+   ```ruby
+   vuln() function
+   ```.
+3. **Goal:** You want to overflow the array buffer in such a way that the return address is overwritten with the address of secretFunc()
 
-- Step 1: Indentify the buffer size and offsets
-  - The buffer `array` is 200 bytes, but you need to determine where the return address is stored relative to the start of the buffer.
+- **Step 1:** Indentify the buffer size and offsets
+  - The buffer
+    ```ruby
+    array
+    ```
+    is 200 bytes, but you need to determine where the return address is stored relative to the start of the buffer.
   - This can be done by trial and error, injecting a large enough input to identify when the overflow occurs.
-- Step 2: Find the Address of `secretFunc()`
-  - You can use a debugger (e.g., `gdb`) to find the address of `secretFunc()`. The address of this function will be injected into the return address location. Use `gdb` to compile and load the program:
+- **Step 2:** Find the Address of
+  ```ruby
+  secretFunc()
+  ```
+  - You can use a debugger (e.g.,
+    ```ruby
+    gdb
+    ```
+    ) to find the address of
+    ```ruby
+    secretFunc()
+    ````
+    . The address of this function will be injected into the return address location. Use `gdb` to compile and load the program:
     ```ruby
     gcc -g bof1.c -o bof1
     gdb ./bof1
     ```
-  - Inside `gdb`, find the address of `secretFunc()`
+  - Inside
+    ```ruby
+    gdb
+    ```
+    , find the address of
+    ```ruby
+    secretFunc()
+    ```
     ```ruby
     (gdb) disassemble secretFunc
     ```
-  - This will give you the memory address where `secretFunc()` is stored.
+  - This will give you the memory address where
+    ```ruby
+    secretFunc()
+    ```
+    is stored.
