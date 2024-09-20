@@ -39,6 +39,21 @@ int main(int argc, char*argv[]){
     (gdb) disassemble secretFunc
     ```
   - This will give you the memory address where `secretFunc()` is stored.
+    ```ruby
+    (gdb) disassemble secretFunc
+    Dump of assembler code for function secretFunc:
+    0x00000000000011b5 <+0>:     push   %rbp
+    0x00000000000011b6 <+1>:     mov    %rsp,%rbp
+    0x00000000000011b9 <+4>:     lea    0xe40(%rip),%rax        # 0x2000
+    0x00000000000011c0 <+11>:    mov    %rax,%rdi
+    0x00000000000011c3 <+14>:    mov    $0x0,%eax
+    0x00000000000011c8 <+19>:    call   0x1020 <printf@plt>
+    0x00000000000011cd <+24>:    nop
+    0x00000000000011ce <+25>:    pop    %rbp
+    0x00000000000011cf <+26>:    ret
+    End of assembler dump.
+    (gdb) 
+    ```
  - **Step 3:** Craft the malicious input
    - 200 characters to fill up the buffer
    - Additional padding to reach the return address
