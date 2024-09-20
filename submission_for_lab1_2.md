@@ -54,6 +54,7 @@ int main(int argc, char*argv[]){
     End of assembler dump.
     (gdb) 
     ```
+ - The address is  `0x00000000000011b5`.
  - **Step 3:** Craft the malicious input
    - 200 characters to fill up the buffer
    - Additional padding to reach the return address
