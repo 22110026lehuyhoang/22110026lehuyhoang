@@ -213,31 +213,30 @@ _filename:
   - As above means you don't have a ```dummyfile``` yet, you can create one by\
     ```touch dummyfile```
   - Verify everything by using ```ls``` again
-    ```ruby
-    Dockerfile                 docker                     flag.out
-    a.out                      docker-compose.debug.yml   flow.c
-    bof1                       docker-compose.yml         flow.out
-    bof1.c                     dummyfile                  input.txt
-    bof1.out                   exploit_input              pattern.c
-    bof2                       file_del                   pattern.out
-    bof2.c                     file_del.asm               peda-session-flag.out.txt
-    bof3                       file_del.o
-    bof3.c                     flag.c
-    ```
+  ```ruby
+  Dockerfile                 docker                     flag.out
+  a.out                      docker-compose.debug.yml   flow.c
+  bof1                       docker-compose.yml         flow.out
+  bof1.c                     dummyfile                  input.txt
+  bof1.out                   exploit_input              pattern.c
+  bof2                       file_del                   pattern.out
+  bof2.c                     file_del.asm               peda-session-flag.out.txt
+  bof3                       file_del.o
+  bof3.c                     flag.c
+  ```
     You can see there's a ```dummyfile``` just below ```docker-compose.yml```
   - Step 4: Run the program again
-    ```./file_del```\
-    ```ls```
-    ```ruby
-    Dockerfile                 bof3.c                     flag.c
-    a.out                      docker                     flag.out
-    bof1                       docker-compose.debug.yml   flow.c
-    bof1.c                     docker-compose.yml         flow.out
-    bof1.out                   exploit_input              input.txt
-    bof2                       file_del                   pattern.c
-    bof2.c                     file_del.asm               pattern.out
-    bof3                       file_del.o                 peda-session-flag.out.txt
-    ```
+    ```./file_del``` and ```ls```
+  ```ruby
+  Dockerfile                 bof3.c                     flag.c
+  a.out                      docker                     flag.out
+  bof1                       docker-compose.debug.yml   flow.c
+  bof1.c                     docker-compose.yml         flow.out
+  bof1.out                   exploit_input              input.txt
+  bof2                       file_del                   pattern.c
+  bof2.c                     file_del.asm               pattern.out
+  bof3                       file_del.o                 peda-session-flag.out.txt
+  ```
     The ```dummyfile``` is deleted, means that we're correct.
 ## Conduct attack on ctf.c
 ```ruby
