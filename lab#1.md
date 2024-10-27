@@ -116,8 +116,7 @@ for i in $(objdump -d sh |grep "^ "|cut -f2); do echo -n '\x'$i; done; echo
 ```
 
 Result:
-![PrintStringtoterminal](https://github.com/user-attachments/assets/402bce5a-e729-428b-b2ec-fce223fb9f15)
-
+![378825506-402bce5a-e729-428b-b2ec-fce223fb9f15](https://github.com/user-attachments/assets/757ade1e-9b67-4d80-aa11-d647da7c6fb0)
 
 **Generate binary file**
 
@@ -141,7 +140,7 @@ First, the program must be compiled with option `-fno-stack-protector` to disabl
 ```bash
 gcc vuln.c -o vuln.o -fno-stack-protector -z execstack -mpreferred-stack-boundary=3 
 ```
-![vuln c and out](https://github.com/user-attachments/assets/56a921b8-edd6-44ed-941d-ac37bacf1992)
+![378825624-56a921b8-edd6-44ed-941d-ac37bacf1992](https://github.com/user-attachments/assets/12678fdb-3daa-4b63-a122-9e571b9d1665)
 
 Secondly, estimate the buffer size of the program. Notice that there is a char variable named `buf` with the size of 64 bytes. The following picture represent the stack frame of the `main()` function of the vulnerable program.
 
@@ -150,8 +149,7 @@ Secondly, estimate the buffer size of the program. Notice that there is a char v
 We can easily see that from `esp` to `eip`, there are 24 bytes, with 16 bytes of `buf`, 4 bytes of `ebp`, and 4 bytes of `eip`.
 
  Now we need to count how many bytes there are:
-![PrintStringtoterminal](https://github.com/user-attachments/assets/c5e776e4-f39b-4f3a-a69a-f1322f2c525e)
-
+![378826790-c5e776e4-f39b-4f3a-a69a-f1322f2c525e](https://github.com/user-attachments/assets/2aa7912c-24ad-46ab-9fcd-e9079dd70b25)
 The program is 77 bytes long. When we inject the hex string of the program into the stack, it takes over 77 bytes over 24 bytes of `buf`. To execute the shellcode through a buffer overflow, we need to overwrite the return address on the stack so that, instead of returning to the original caller (or exit), the program jumps to the location in memory where the shellcode is stored—in this case, the `esp` (stack pointer).
 
 We really have a problem here, do we?
@@ -190,8 +188,7 @@ First, docker pull the bwapp back
 ![bwaap](https://github.com/user-attachments/assets/8079c86c-a957-44ee-8abc-0303a5e652bb)
 Then we can go to the (http://localhost:8025/portal.php) page.
 Now, download SQLmap
-![Capture](https://github.com/user-attachments/assets/9f22c6d9-edf0-44cf-84a6-c714699317b4)
-
+![378802823-9f22c6d9-edf0-44cf-84a6-c714699317b4](https://github.com/user-attachments/assets/92ced7e2-64ec-4549-834f-b871d2590021)
 Then, we fetch the cookie fromt the website, which will help us for the login 
 ![cookie](https://github.com/user-attachments/assets/10b49cda-eeb6-4703-b7ca-4959cdd819fb)
 Then, only then do we go to the sqlmap to use the cookie for the task:
