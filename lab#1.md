@@ -170,7 +170,6 @@ For now, I will go to terminal of Kali Linux, due to lab 2 needs to be made too
 **Explanation:**
 I will use the directory `stuff` to resolve the problem in Kali
 In this context, the process of compiling a C source file into an object file and then mapping it into a shared object (likely a `.so` file in Unix-like systems). A shared object is similar to a library (like `libc`), which contains predefined functions that can be dynamically linked and used by programs at runtime.
-![evattack c file](https://github.com/user-attachments/assets/dc2a92c7-61e6-4f39-8bcf-f2054603dfb0)
 
 In the example:
 
